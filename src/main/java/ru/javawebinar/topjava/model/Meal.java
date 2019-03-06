@@ -3,6 +3,8 @@ package ru.javawebinar.topjava.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Meal {
     private final LocalDateTime dateTime;
@@ -15,6 +17,11 @@ public class Meal {
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
+    }
+
+    @Override
+    public String toString() {
+         return Stream.of(dateTime.toString(), description, String.valueOf(calories)).collect(Collectors.joining(", "));
     }
 
     public LocalDateTime getDateTime() {
